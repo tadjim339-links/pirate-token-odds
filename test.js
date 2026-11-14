@@ -1,0 +1,16 @@
+const assert = require('node:assert');
+const o = require('./odds.js');
+const near = (a, b, eps) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
+near(o.chanceAfter(1000), 0.00725, 1e-4);
+near(o.chanceAfter(2000), 0.01444, 1e-4);
+near(o.chanceAfter(10000), 0.07015, 1e-4);
+near(o.chanceAfter(137500), 0.63212, 1e-4);
+assert.strictEqual(o.triesFor(0.5), 95308);
+assert.strictEqual(o.triesFor(0.9), 316605);
+assert.strictEqual(o.triesFor(0.99), 633209);
+assert.strictEqual(o.chanceAfter(0), 0);
+let s = 0; const N = 20000; let seed = 42;
+const rng = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
+for (let i = 0; i < N; i++) s += o.simulate(137500, rng);
+near(s / N / 137500, 1, 0.05);
+console.log('all tests passed');

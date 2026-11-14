@@ -1,0 +1,10 @@
+{
+  "name": "pirate-token-odds",
+  "version": "1.0.0",
+  "description": "Drop-rate math for a 1-in-137,500 rare drop: chance after N chests, chests needed for a target chance, and a simulator. Zero dependencies.",
+  "main": "odds.js",
+  "scripts": { "test": "node test.js" },
+  "keywords": ["probability", "drop-rate", "geometric-distribution", "odds", "loot", "calculator"],
+  "homepage": "https://piratetokencalculator.com/",
+  "license": "MIT"
+}
